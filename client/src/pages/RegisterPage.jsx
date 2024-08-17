@@ -1,122 +1,123 @@
 import React from "react";
-import { useState } from "react";
 import { useAuth } from "../context/Authentication";
 import { useNavigate } from "react-router-dom";
-import RegisterInput from "../components/RegisterInput";
+import useValidatation from "../hook/useValidatation";
 
 const RegisterPage = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [errorMessage, setErrorMessage] = useState({});
   const { register } = useAuth();
+
+  const {
+    errorMessage,
+    setUsername,
+    setPassword,
+    setConfirmPassword,
+    username,
+    password,
+    confirmPassword,
+  } = useValidatation();
   const navigate = useNavigate();
 
-  const handleValidate = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    const lowerCase = /[a-z]/g;
-    const upperCase = /[A-Z]/g;
-    const numbers = /[0-9]/g;
-    if (username === "") {
-      setErrorMessage({ username: "Username is required" });
-    } else if (password === "") {
-      setErrorMessage({ password: "Password is required" });
-    } else if (!password.match(lowerCase)) {
-      setErrorMessage({
-        password: "Password should contains lowercase letters!",
-      });
-    } else if (!password.match(upperCase)) {
-      setErrorMessage({
-        password: "Password should contains uppercase letters!",
-      });
-    } else if (!password.match(numbers)) {
-      setErrorMessage({ password: "Password should contains numbers also!" });
-    } else if (password.length < 9) {
-      setErrorMessage({ password: "Password length should be more than 9" });
-    } else if (firstname === "") {
-      setErrorMessage({ firstname: "Firstname is required" });
-    } else if (lastname === "") {
-      setErrorMessage({ lastname: "Lastname is required" });
-    } else {
-      handleRegister();
-    }
-  };
+    if (
+      errorMessage?.username ||
+      errorMessage?.password ||
+      errorMessage?.confirmPassword
+    )
+      return;
 
-  const handleRegister = async () => {
     const data = {
       username,
       password,
-      firstname,
-      lastname,
+      confirmPassword,
     };
     register(data);
   };
 
   return (
     <>
-      <main className="bg-shopping bg-cover w-screen h-screen font-poppins">
-        <section className="w-full h-full flex flex-col justify-center items-center">
-          <form
-            onSubmit={handleValidate}
-            className="p-10 w-[280px] sm:w-[400px] h-[650px] rounded-3xl flex flex-col gap-1 justify-center items-center backdrop-opacity-5 bg-gray-900 bg-opacity-90 shadow-2xl"
-          >
-            <h1 className="text-gray-100 text-center text-2xl sm:text-3xl font-bold mb-5">
-              Account Register
-            </h1>
+      <div className="modal-login p-14 w-full h-screen flex flex-col items-center justify-center relative">
+        <h1 className="text-3xl flex justify-start w-full max-w-[500px] text-white">
+          Sign Up
+        </h1>
 
-            <RegisterInput
-              name="Username"
+        <form
+          onSubmit={handleRegister}
+          className="flex flex-col gap-4 mt-6 w-full max-w-[500px]"
+        >
+          {/* username */}
+          <div className="relative">
+            <input
               type="text"
-              placeholder="Enter your username"
+              className={`text-white mt-1 p-4 border border-gray-300 block w-full shadow-sm sm:text-sm rounded-md h-12 bg-slate-600 border-none outline-none ${
+                errorMessage.username && "shadow-bottom-only"
+              }`}
+              placeholder="Email or phone number"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              errorMessage={errorMessage.username}
             />
-            <RegisterInput
-              name="Password"
+
+            <p className="text-sm mt-2 pl-1 text-[#fa9a00]">
+              {errorMessage.username}
+            </p>
+          </div>
+
+          {/* password */}
+          <div>
+            <input
               type="password"
-              placeholder="e.g. ToonLogin!3"
+              id="password"
+              name="password"
+              autoComplete="current-password"
+              className={`text-white mt-1 p-4 border border-gray-300 block w-full shadow-sm sm:text-sm rounded-md h-12 bg-slate-600 border-none outline-none ${
+                errorMessage.password && "shadow-bottom-only"
+              }`}
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              errorMessage={errorMessage.password}
             />
-            <RegisterInput
-              name="Firstname"
-              type="text"
-              placeholder="Enter your firstname"
-              value={firstname}
-              onChange={(e) => setFirstname(e.target.value)}
-              errorMessage={errorMessage.firstname}
-            />
-            <RegisterInput
-              name="Lastname"
-              type="text"
-              placeholder="Enter your lastname"
-              value={lastname}
-              onChange={(e) => setLastname(e.target.value)}
-              errorMessage={errorMessage.lastname}
-            />
+            <p className="text-sm mt-2 pl-1 text-[#fa9a00]">
+              {errorMessage.password}
+            </p>
+          </div>
 
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-1 w-full mt-3">
-              <p className="text-white text-sm">Already have an account ? </p>
-              <span
-                className="text-blue-600 underline cursor-pointer text-sm"
-                onClick={() => navigate("/login")}
-              >
-                Log in
-              </span>
-            </div>
+          {/* confirm password */}
+          <div>
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirm-password"
+              className={`text-white mt-1 p-4 border border-gray-300 block w-full shadow-sm sm:text-sm rounded-md h-12 bg-slate-600 border-none outline-none ${
+                errorMessage.confirmPassword && "shadow-bottom-only"
+              }`}
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            <p className="text-sm mt-2 pl-1 text-[#fa9a00]">
+              {errorMessage.confirmPassword}
+            </p>
+          </div>
 
+          {/* submit button */}
+          <div className="mt-5">
             <button
               type="submit"
-              className="text-white border p-2 w-44 rounded-full font-bold text-xl mt-5 hover:bg-gray-600 hover:border-gray-600 duration-300"
+              className="w-full bg-[#e13b30] hover:bg-[#b8320f] text-white font-bold py-2 px-4 rounded"
             >
               Sign Up
             </button>
-          </form>
-        </section>
-      </main>
+          </div>
+
+          {/* recaptcha */}
+          <div
+            onClick={() => navigate("/signin")}
+            className="text-blue-500 hover:underline cursor-pointer hover:underline-offset-4"
+          >
+            Back to sign in
+          </div>
+        </form>
+      </div>
     </>
   );
 };

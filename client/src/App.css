@@ -1,3 +1,17 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* custom in login modal */
+.chakra-checkbox__label {
+  font-size: 1.2rem;
+  color: rgb(209 213 219);
+}
+
+.modal-login {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("https://images.pexels.com/photos/2726370/pexels-photo-2726370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

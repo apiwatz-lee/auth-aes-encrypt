@@ -118,8 +118,8 @@ function App() {
                   path="/product/detail/:id"
                   element={<ProductDetailsPage />}
                 />
-                <Route path="/register" element={<RegisterPage />} />
-                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<RegisterPage />} />
+                <Route path="/signin" element={<LoginPage />} />
                 <Route path="*" element={<PageNotFoud />} />
               </>
             )}

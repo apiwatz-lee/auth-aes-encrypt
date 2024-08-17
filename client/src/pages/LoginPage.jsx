@@ -2,13 +2,15 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import LoginForm from "../components/LoginForm";
+import LoginModal from "../components/LoginModal";
+import useValidatation from "../hook/useValidatation";
 
 const LoginPage = () => {
   const navigate = useNavigate();
 
   return (
-    <>
-      <main className="bg-shopping bg-cover w-screen h-screen font-poppins">
+    <section className="w-full h-screen flex justify-center items-center">
+      {/* <section className="bg-shopping bg-cover w-screen h-screen font-poppins">
         <div
           className="hidden lg:block absolute top-5 left-5 text-white cursor-pointer"
           onClick={() => navigate("/product")}
@@ -17,8 +19,10 @@ const LoginPage = () => {
         </div>
 
         <LoginForm />
-      </main>
-    </>
+      </section> */}
+
+      <LoginModal />
+    </section>
   );
 };
 
