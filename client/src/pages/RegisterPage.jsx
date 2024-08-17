@@ -50,7 +50,7 @@ const RegisterPage = () => {
             <input
               type="text"
               className={`text-white mt-1 p-4 border border-gray-300 block w-full shadow-sm sm:text-sm rounded-md h-12 bg-slate-600 border-none outline-none ${
-                errorMessage.username && "shadow-bottom-only"
+                errorMessage?.username && "shadow-bottom-only"
               }`}
               placeholder="Email or phone number"
               value={username}
@@ -58,7 +58,7 @@ const RegisterPage = () => {
             />
 
             <p className="text-sm mt-2 pl-1 text-[#fa9a00]">
-              {errorMessage.username}
+              {errorMessage?.username}
             </p>
           </div>
 
@@ -70,14 +70,14 @@ const RegisterPage = () => {
               name="password"
               autoComplete="current-password"
               className={`text-white mt-1 p-4 border border-gray-300 block w-full shadow-sm sm:text-sm rounded-md h-12 bg-slate-600 border-none outline-none ${
-                errorMessage.password && "shadow-bottom-only"
+                errorMessage?.password && "shadow-bottom-only"
               }`}
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <p className="text-sm mt-2 pl-1 text-[#fa9a00]">
-              {errorMessage.password}
+              {errorMessage?.password}
             </p>
           </div>
 
@@ -88,14 +88,14 @@ const RegisterPage = () => {
               id="confirm-password"
               name="confirm-password"
               className={`text-white mt-1 p-4 border border-gray-300 block w-full shadow-sm sm:text-sm rounded-md h-12 bg-slate-600 border-none outline-none ${
-                errorMessage.confirmPassword && "shadow-bottom-only"
+                errorMessage?.confirmPassword && "shadow-bottom-only"
               }`}
               placeholder="Confirm Password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <p className="text-sm mt-2 pl-1 text-[#fa9a00]">
-              {errorMessage.confirmPassword}
+              {errorMessage?.confirmPassword}
             </p>
           </div>
 
@@ -112,7 +112,7 @@ const RegisterPage = () => {
           {/* recaptcha */}
           <div
             onClick={() => navigate("/signin")}
-            className="text-blue-500 hover:underline cursor-pointer hover:underline-offset-4"
+            className="text-gray-300 hover:underline cursor-pointer hover:underline-offset-4"
           >
             Back to sign in
           </div>

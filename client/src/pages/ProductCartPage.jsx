@@ -1,13 +1,12 @@
 import React from "react";
-import { useContext } from "react";
-import { AppContext } from "../App";
 import ProductCartList from "../components/ProductCartList";
 import ProductCartSummary from "../components/ProductCartSummary";
 import Navigator from "../components/Navigator";
 import { CiShoppingCart } from "react-icons/ci";
+import { useApp } from "../context/AppContext";
 
 const ProductCartPage = () => {
-  const { cart } = useContext(AppContext);
+  const { cart } = useApp();
 
   return (
     <>

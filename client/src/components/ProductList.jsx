@@ -2,14 +2,13 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AppContext } from "../App";
 import { useAuth } from "../context/Authentication";
 import { jwtDecode } from "jwt-decode";
 import { MdEdit } from "react-icons/md";
+import { useApp } from "../context/AppContext";
 
 const ProductList = () => {
-  const { keyword, setIsLoading, page, setTotalPage } = useContext(AppContext);
+  const { keyword, setIsLoading, page, setTotalPage } = useApp();
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();

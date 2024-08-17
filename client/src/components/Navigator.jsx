@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
-import { useContext } from "react";
-import { AppContext } from "../App";
 import { useAuth } from "../context/Authentication";
 import { jwtDecode } from "jwt-decode";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { CiShoppingTag } from "react-icons/ci";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { CiLogout, CiLogin } from "react-icons/ci";
+import { useApp } from "../context/AppContext";
 
 export default function Navigator() {
   const location = useLocation();
-  const { cart, setCart, setKeyword } = useContext(AppContext);
+
+  const { cart, setCart, setKeyword } = useApp();
   const { logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 

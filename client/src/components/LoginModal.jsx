@@ -36,8 +36,9 @@ const LoginModal = () => {
         <div className="relative">
           <input
             type="text"
-            required
-            className=" text-white mt-1 p-4 border border-gray-300 block w-full shadow-sm sm:text-sm rounded-md h-12 bg-slate-600 border-none outline-none focus:shadow-bottom-only"
+            className={`text-white mt-1 p-4 border border-gray-300 block w-full shadow-sm sm:text-sm rounded-md h-12 bg-slate-600 border-none outline-none ${
+              errorMessage?.username && "shadow-bottom-only"
+            }`}
             placeholder="Email or phone number"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -53,9 +54,9 @@ const LoginModal = () => {
             type="password"
             id="password"
             name="password"
-            autoComplete="current-password"
-            required
-            className="text-white mt-1 p-4 border border-gray-300 block w-full shadow-sm sm:text-sm rounded-md h-12 bg-slate-600 border-none outline-none focus:shadow-bottom-only"
+            className={`text-white mt-1 p-4 border border-gray-300 block w-full shadow-sm sm:text-sm rounded-md h-12 bg-slate-600 border-none outline-none ${
+              errorMessage?.password && "shadow-bottom-only"
+            }`}
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

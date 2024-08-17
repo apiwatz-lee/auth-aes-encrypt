@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
-import { AppContext } from "../App";
 import { PiMagnifyingGlassThin } from "react-icons/pi";
+import { useApp } from "../context/AppContext";
 
 const SearchBar = () => {
-  const { keyword, setKeyword } = useContext(AppContext);
+  const { keyword, setKeyword } = useApp();
 
   return (
     <div className="relative w-full">

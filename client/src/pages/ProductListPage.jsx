@@ -1,11 +1,11 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import ProductList from "../components/ProductList";
 import { useToast } from "@chakra-ui/react";
-import { AppContext } from "../App";
 import SearchBar from "../components/SearchBar";
 import Navigator from "../components/Navigator";
 import Loading from "../components/Loading";
 import Pagination from "../components/Pagination";
+import { useApp } from "../context/AppContext";
 
 const ProductListPage = () => {
   const {
@@ -22,7 +22,7 @@ const ProductListPage = () => {
     setIsDeleteCompleted,
     isPaymentSuccess,
     setIsPaymentSuccess,
-  } = useContext(AppContext);
+  } = useApp();
 
   const toast = useToast();
 
