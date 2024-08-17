@@ -83,7 +83,7 @@ const useValidatation = () => {
         ...prev,
         confirmPassword: "Passwords do not match",
       }));
-    } else if (confirmPassword !== "") {
+    } else if (confirmPassword.length > 0 && password === confirmPassword) {
       setErrorMessage((prev) => ({
         ...prev,
         confirmPassword: "",

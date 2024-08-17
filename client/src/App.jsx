@@ -9,9 +9,18 @@ import PageNotFoud from "./pages/PageNotFoud";
 import LoginPage from "./pages/LoginPage";
 import { useAuth } from "./context/Authentication";
 import RegisterPage from "./pages/RegisterPage";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/signin");
+    }
+  }, []);
 
   return (
     <>
@@ -35,13 +44,13 @@ function App() {
           </>
         ) : (
           <>
-            <Route path="/" element={<Homepage />} />
+            {/* <Route path="/" element={<Homepage />} />
             <Route path="/product" element={<ProductListPage />} />
             <Route path="/product/cart" element={<ProductCartPage />} />
             <Route
               path="/product/detail/:id"
               element={<ProductDetailsPage />}
-            />
+            /> */}
             <Route path="/signup" element={<RegisterPage />} />
             <Route path="/signin" element={<LoginPage />} />
             <Route path="*" element={<PageNotFoud />} />

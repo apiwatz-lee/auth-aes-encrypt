@@ -75,7 +75,7 @@ const LoginModal = () => {
           </button>
         </div>
 
-        <div className=" flex justify-between">
+        <div className=" flex justify-between flex-wrap">
           <Stack spacing={5} direction="row">
             <Checkbox colorScheme="gray" defaultChecked>
               Remember me

@@ -6,7 +6,7 @@ import { useToast } from "@chakra-ui/react";
 
 const AuthContext = createContext();
 
-const AuthProvider = (props) => {
+const AuthProvider = ({ children }) => {
   const [state, setState] = useState({
     loading: null,
     error: null,
@@ -83,7 +83,7 @@ const AuthProvider = (props) => {
     <AuthContext.Provider
       value={{ state, register, login, isAuthenticated, logout }}
     >
-      {props.children}
+      {children}
     </AuthContext.Provider>
   );
 };
