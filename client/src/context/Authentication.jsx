@@ -19,22 +19,39 @@ const AuthProvider = ({ children }) => {
   const server = import.meta.env.VITE_API;
 
   const register = async (data) => {
-    await axios.post(`${server}/auth/register`, data);
-    toast({
-      title: "Register successfully.",
-      description: `We have created your account successfully!`,
-      status: "success",
-      duration: 2000,
-      isClosable: true,
-      position: "top",
-    });
-    navigate("/login");
+    try {
+      const {
+        data: { message },
+      } = await axios.post(`${server}/auth/register`, data);
+
+      if (message === "user has been created successfully") {
+        toast({
+          title: "Register successfully.",
+          description: `We have created your account successfully!`,
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+        navigate("/signin");
+      }
+    } catch (error) {
+      console.log(error?.response?.data?.message);
+      toast({
+        title: "signup failed.",
+        description: `username is already taken.`,
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+        position: "top",
+      });
+    }
   };
 
   const login = async (data) => {
     try {
       const result = await axios.post(`${server}/auth/login`, data);
-      const token = result.data.token;
+      const token = result?.data?.token;
       localStorage.setItem("token", token);
       const userDataFromToken = jwtDecode(token);
       setState({ ...state, user: userDataFromToken });
@@ -68,7 +85,7 @@ const AuthProvider = ({ children }) => {
     const name = decodeToken.firstname;
     localStorage.removeItem("token");
     setState({ ...state, user: null });
-    navigate("/");
+    navigate("/signin");
     toast({
       title: "Logout successfully.",
       description: `Hey ${name}, See you around!`,

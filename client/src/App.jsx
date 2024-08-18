@@ -36,21 +36,10 @@ function App() {
               element={<ProductDetailsPage />}
             />
             <Route path="/product/cart" element={<ProductCartPage />} />
-            <Route
-              path="/payment/checkout-success"
-              element={<CheckoutSuccess />}
-            />
             <Route path="*" element={<PageNotFoud />} />
           </>
         ) : (
           <>
-            {/* <Route path="/" element={<Homepage />} />
-            <Route path="/product" element={<ProductListPage />} />
-            <Route path="/product/cart" element={<ProductCartPage />} />
-            <Route
-              path="/product/detail/:id"
-              element={<ProductDetailsPage />}
-            /> */}
             <Route path="/signup" element={<RegisterPage />} />
             <Route path="/signin" element={<LoginPage />} />
             <Route path="*" element={<PageNotFoud />} />

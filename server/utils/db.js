@@ -5,7 +5,16 @@ dotenv.config();
 const connectionString = process.env.MONGO_CONNECTION;
 
 export const client = new MongoClient(connectionString, {
-    useUnifiedTopology: true,
-  });
+  useUnifiedTopology: true,
+});
 
-export const db = client.db("xsurface");
+export const connectionToMongoDb = async () => {
+  try {
+    await client.connect();
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const db = client.db("auth-aes-encrypt");

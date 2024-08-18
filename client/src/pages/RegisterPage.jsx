@@ -112,7 +112,7 @@ const RegisterPage = () => {
           {/* recaptcha */}
           <div
             onClick={() => navigate("/signin")}
-            className="text-gray-300 hover:underline cursor-pointer hover:underline-offset-4"
+            className="text-gray-300 hover:underline cursor-pointer hover:underline-offset-4 hover:text-blue-500"
           >
             Back to sign in
           </div>

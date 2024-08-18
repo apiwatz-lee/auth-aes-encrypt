@@ -48,19 +48,36 @@ const useValidatation = () => {
   };
 
   const handleValidatePassword = (password) => {
-    const passwordCondition = password.length >= 4 && password.length <= 60;
+    const moreThanFourAndLessThanSixty =
+      password.length >= 4 && password.length <= 60;
+    const lowerCase = /[a-z]/g;
+    const upperCase = /[A-Z]/g;
+    const numbers = /[0-9]/g;
 
     if (password === "") {
       setErrorMessage((prev) => ({
         ...prev,
         password: "Password is required",
       }));
-    }
-
-    if (!passwordCondition) {
+    } else if (!moreThanFourAndLessThanSixty) {
       setErrorMessage((prev) => ({
         ...prev,
         password: "Your password must contain between 4 and 60 characters",
+      }));
+    } else if (!password.match(upperCase)) {
+      setErrorMessage((prev) => ({
+        ...prev,
+        password: "Your password must contain at least one uppercase letter",
+      }));
+    } else if (!password.match(lowerCase)) {
+      setErrorMessage((prev) => ({
+        ...prev,
+        password: "Your password must contain at least one lowercase letter",
+      }));
+    } else if (!password.match(numbers)) {
+      setErrorMessage((prev) => ({
+        ...prev,
+        password: "Your password must contain at least one number",
       }));
     } else {
       setErrorMessage((prev) => ({

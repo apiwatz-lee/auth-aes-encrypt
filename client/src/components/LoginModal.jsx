@@ -96,7 +96,7 @@ const LoginModal = () => {
           New to Netflix?{" "}
           <span
             onClick={() => navigate("/signup")}
-            className="text-white text-base cursor-pointer hover:underline hover:underline-offset-4"
+            className="text-white text-base cursor-pointer hover:underline hover:underline-offset-4 hover:text-blue-500"
           >
             Sign up now
           </span>
