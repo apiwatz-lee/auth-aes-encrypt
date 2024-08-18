@@ -1,16 +1,12 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import ProductListPage from "./pages/ProductListPage";
-import UploadProductPage from "./pages/UploadProductPage";
-import ProductDetailsPage from "./pages/ProductDetailsPage";
-import ProductCartPage from "./pages/ProductCartPage";
-import Homepage from "./pages/Homepage";
 import PageNotFoud from "./pages/PageNotFoud";
 import LoginPage from "./pages/LoginPage";
 import { useAuth } from "./context/Authentication";
 import RegisterPage from "./pages/RegisterPage";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import MovieListPage from "./pages/MovieListPage";
 
 function App() {
   const { isAuthenticated } = useAuth();
@@ -27,15 +23,7 @@ function App() {
       <Routes>
         {isAuthenticated ? (
           <>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/product" element={<ProductListPage />} />
-            <Route path="/product/upload/" element={<UploadProductPage />} />
-            <Route path="/product/upload/:id" element={<UploadProductPage />} />
-            <Route
-              path="/product/detail/:id"
-              element={<ProductDetailsPage />}
-            />
-            <Route path="/product/cart" element={<ProductCartPage />} />
+            <Route path="/movies" element={<MovieListPage />} />
             <Route path="*" element={<PageNotFoud />} />
           </>
         ) : (

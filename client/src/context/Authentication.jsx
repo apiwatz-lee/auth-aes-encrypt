@@ -7,7 +7,7 @@ import { useToast } from "@chakra-ui/react";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [state, setState] = useState({
+  const [account, setAccount] = useState({
     loading: null,
     error: null,
     user: null,
@@ -54,8 +54,8 @@ const AuthProvider = ({ children }) => {
       const token = result?.data?.token;
       localStorage.setItem("token", token);
       const userDataFromToken = jwtDecode(token);
-      setState({ ...state, user: userDataFromToken });
-      navigate("/product");
+      setAccount({ ...account, user: userDataFromToken });
+      navigate("/movies");
       toast({
         title: "Login successfully",
         description: `Hello ${userDataFromToken.firstname}, Have a good day!`,
@@ -84,7 +84,7 @@ const AuthProvider = ({ children }) => {
     const decodeToken = jwtDecode(getToken);
     const name = decodeToken.firstname;
     localStorage.removeItem("token");
-    setState({ ...state, user: null });
+    setAccount({ ...account, user: null });
     navigate("/signin");
     toast({
       title: "Logout successfully.",
@@ -98,7 +98,7 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ state, register, login, isAuthenticated, logout }}
+      value={{ account, register, login, isAuthenticated, logout }}
     >
       {children}
     </AuthContext.Provider>

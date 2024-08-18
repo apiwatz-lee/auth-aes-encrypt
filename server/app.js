@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
-import { client, connectionToMongoDb } from "./utils/db.js";
+import { connectionToMongoDb } from "./utils/db.js";
 import cloudinary from "cloudinary";
 import productRouter from "./router/product.js";
 import authRouter from "./router/auth.js";
@@ -21,8 +21,6 @@ async function init() {
   app.use(bodyParser.json());
   const port = process.env.PORT || 4000;
 
-  await connectionToMongoDb();
-
   app.use("/product", productRouter);
   app.use("/auth", authRouter);
   app.use("/stripe", stripeRouter);
@@ -34,7 +32,8 @@ async function init() {
     res.status(404).send("Not found endpoint");
   });
 
-  app.listen(port, () => {
+  app.listen(port, async () => {
+    await connectionToMongoDb();
     console.log(`Server is running at ${port}`);
   });
 }
