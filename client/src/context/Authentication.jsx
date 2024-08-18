@@ -7,15 +7,9 @@ import { useToast } from "@chakra-ui/react";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [account, setAccount] = useState({
-    loading: null,
-    error: null,
-    user: null,
-  });
-
+  const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
   const toast = useToast();
-
   const server = import.meta.env.VITE_API;
 
   const register = async (data) => {
@@ -52,9 +46,13 @@ const AuthProvider = ({ children }) => {
     try {
       const result = await axios.post(`${server}/auth/login`, data);
       const token = result?.data?.token;
-      localStorage.setItem("token", token);
+      if (rememberMe) {
+        localStorage.setItem("token", token);
+      } else {
+        sessionStorage.setItem("token", token);
+      }
+
       const userDataFromToken = jwtDecode(token);
-      setAccount({ ...account, user: userDataFromToken });
       navigate("/movies");
       toast({
         title: "Login successfully",
@@ -77,14 +75,17 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const isAuthenticated = Boolean(localStorage.getItem("token"));
+  const isAuthenticated = Boolean(
+    localStorage.getItem("token") || sessionStorage.getItem("token")
+  );
 
   const logout = () => {
-    const getToken = localStorage.getItem("token");
+    const getToken =
+      localStorage.getItem("token") || sessionStorage.getItem("token");
     const decodeToken = jwtDecode(getToken);
     const name = decodeToken.firstname;
     localStorage.removeItem("token");
-    setAccount({ ...account, user: null });
+    sessionStorage.removeItem("token");
     navigate("/signin");
     toast({
       title: "Logout successfully.",
@@ -98,7 +99,14 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ account, register, login, isAuthenticated, logout }}
+      value={{
+        register,
+        login,
+        isAuthenticated,
+        logout,
+        rememberMe,
+        setRememberMe,
+      }}
     >
       {children}
     </AuthContext.Provider>

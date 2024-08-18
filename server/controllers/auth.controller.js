@@ -10,6 +10,7 @@ import { encryptData } from "../utils/aes.js";
 export const register = async (req, res) => {
   try {
     const user = {
+      account_name: encryptData(req.body.accountName),
       username: encryptData(req.body.username),
       password: await hashPassword(req.body.password),
       created_at: new Date(),

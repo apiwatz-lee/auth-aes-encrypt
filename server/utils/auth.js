@@ -19,7 +19,7 @@ export const generateToken = async (user) => {
   return await jwt.sign(
     {
       userId: user._id,
-      firstname: decryptData(user.username),
+      firstname: decryptData(user.account_name),
       lastname: user.lastname,
       role: "user",
     },

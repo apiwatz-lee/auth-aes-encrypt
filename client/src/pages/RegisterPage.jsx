@@ -8,9 +8,11 @@ const RegisterPage = () => {
 
   const {
     errorMessage,
+    setAccountName,
     setUsername,
     setPassword,
     setConfirmPassword,
+    accountName,
     username,
     password,
     confirmPassword,
@@ -20,6 +22,7 @@ const RegisterPage = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     if (
+      errorMessage.accountName ||
       errorMessage?.username ||
       errorMessage?.password ||
       errorMessage?.confirmPassword
@@ -27,6 +30,7 @@ const RegisterPage = () => {
       return;
 
     const data = {
+      accountName,
       username,
       password,
       confirmPassword,
@@ -45,6 +49,23 @@ const RegisterPage = () => {
           onSubmit={handleRegister}
           className="flex flex-col gap-4 mt-6 w-full max-w-[500px]"
         >
+          {/* account name */}
+          <div className="relative">
+            <input
+              type="text"
+              className={`text-white mt-1 p-4 border border-gray-300 block w-full shadow-sm sm:text-sm rounded-md h-12 bg-slate-600 border-none outline-none ${
+                errorMessage?.accountName && "shadow-bottom-only"
+              }`}
+              placeholder="Your account name"
+              value={accountName}
+              onChange={(e) => setAccountName(e.target.value)}
+            />
+
+            <p className="text-sm mt-2 pl-1 text-[#fa9a00]">
+              {errorMessage?.accountName}
+            </p>
+          </div>
+
           {/* username */}
           <div className="relative">
             <input

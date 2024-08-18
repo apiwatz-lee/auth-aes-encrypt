@@ -5,7 +5,7 @@ import useValidatation from "../hook/useValidatation";
 
 const LoginModal = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, rememberMe, setRememberMe } = useAuth();
 
   const { errorMessage, setUsername, setPassword, username, password } =
     useValidatation();
@@ -77,14 +77,19 @@ const LoginModal = () => {
 
         <div className=" flex justify-between flex-wrap">
           <Stack spacing={5} direction="row">
-            <Checkbox colorScheme="gray" defaultChecked>
+            <Checkbox
+              colorScheme="gray"
+              checked={rememberMe}
+              onChange={() => setRememberMe((prev) => !prev)}
+            >
               Remember me
             </Checkbox>
           </Stack>
 
           <div>
             <a
-              href="#"
+              href="https://help.netflix.com/th"
+              target="_blank"
               className="text-sm text-gray-300 hover:underline hover:underline-offset-4"
             >
               Need help?
@@ -104,9 +109,13 @@ const LoginModal = () => {
 
         <div className="text-gray-300 text-sm">
           This page is protected by Google reCAPTCHA to ensure you're not a bot.{" "}
-          <span className="text-blue-500 hover:underline cursor-pointer hover:underline-offset-4">
+          <a
+            href="https://www.google.com/recaptcha/about/"
+            target="_blank"
+            className="text-blue-500 hover:underline cursor-pointer hover:underline-offset-4"
+          >
             Learn more.
-          </span>
+          </a>
         </div>
       </form>
     </div>

@@ -15,6 +15,8 @@ function App() {
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/signin");
+    } else {
+      navigate("/movies");
     }
   }, []);
 

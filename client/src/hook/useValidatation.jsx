@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useValidatation = () => {
+  const [accountName, setAccountName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -9,6 +10,25 @@ const useValidatation = () => {
     password: "",
     confirmPassword: "",
   });
+
+  const handleValidateAccountName = (accountName) => {
+    if (accountName === "") {
+      setErrorMessage((prev) => ({
+        ...prev,
+        accountName: "Account name is required",
+      }));
+    } else if (accountName.length < 4) {
+      setErrorMessage((prev) => ({
+        ...prev,
+        accountName: "Account name must be at least 4 characters",
+      }));
+    } else {
+      setErrorMessage((prev) => ({
+        ...prev,
+        accountName: "",
+      }));
+    }
+  };
 
   const handleValidateUsername = (username) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -108,17 +128,24 @@ const useValidatation = () => {
     }
   };
 
-  const handleSigupValidation = (username, password, confirmPassword) => {
+  const handleSigupValidation = (
+    accountName,
+    username,
+    password,
+    confirmPassword
+  ) => {
+    handleValidateAccountName(accountName);
     handleValidateUsername(username);
     handleValidatePassword(password);
     handleValidateConfirmPassword(confirmPassword);
   };
 
   useEffect(() => {
-    handleSigupValidation(username, password, confirmPassword);
-  }, [username, password, confirmPassword]);
+    handleSigupValidation(accountName, username, password, confirmPassword);
+  }, [accountName, username, password, confirmPassword]);
 
   return {
+    handleValidateAccountName,
     handleValidateUsername,
     handleValidatePassword,
     handleValidateConfirmPassword,
@@ -126,6 +153,8 @@ const useValidatation = () => {
     setUsername,
     setPassword,
     setConfirmPassword,
+    accountName,
+    setAccountName,
     username,
     password,
     confirmPassword,
