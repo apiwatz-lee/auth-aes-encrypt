@@ -19,7 +19,7 @@ const Movies = () => {
         </p>
         <hr className="h-[1px] bg-white opacity-60 my-3" />
 
-        {movies.map((movie) => (
+        {movies?.map((movie) => (
           <MovieRecommend
             key={movie?.id}
             title={movie?.title}
