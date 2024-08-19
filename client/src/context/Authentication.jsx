@@ -54,9 +54,6 @@ const AuthProvider = ({ children }) => {
 
       const decodeToken = jwtDecode(token);
 
-      // to see the remaining time of the token
-      // console.log((decodeToken.exp * 1000 - Date.now()) / 1000);
-
       navigate("/movies");
       toast({
         title: "Login successfully",
