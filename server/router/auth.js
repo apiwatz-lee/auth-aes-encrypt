@@ -4,7 +4,11 @@ import {
   validateSignUpPayload,
   validateUsername,
   validatePassword,
-} from "../middlewares/auth.validation.js";
+} from "../middlewares/register.validation.js";
+import {
+  compareUsernameLogin,
+  comparePasswordLogin,
+} from "../middlewares/login.validation.js";
 
 const authRouter = Router();
 
@@ -16,6 +20,6 @@ authRouter.post(
   register
 );
 
-authRouter.post("/login", login);
+authRouter.post("/login", compareUsernameLogin, comparePasswordLogin, login);
 
 export default authRouter;

@@ -4,15 +4,16 @@ import { encryptData } from "../utils/aes.js";
 
 export const validateSignUpPayload = async (req, res, next) => {
   try {
-    const { username, password, confirmPassword } = req.body;
+    const { accountName, username, password, confirmPassword } = req.body;
+
+    if (!accountName || !username || !password || !confirmPassword) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
     const encryptUsername = encryptData(username);
     const findUsername = await db
       .collection("users")
       .findOne({ username: encryptUsername });
-
-    if (!username || !password || !confirmPassword) {
-      return res.status(400).json({ message: "All fields are required" });
-    }
 
     if (findUsername) {
       return res.status(500).json({ message: "Username is already taken" });
@@ -20,9 +21,7 @@ export const validateSignUpPayload = async (req, res, next) => {
 
     next();
   } catch (error) {
-    return res
-      .status(400)
-      .json({ error: `Register weng wrong :${error.message}` });
+    return res.status(400).json({ error: `Register weng wrong :${error}` });
   }
 };
 

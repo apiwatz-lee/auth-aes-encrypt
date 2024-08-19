@@ -4,9 +4,7 @@ import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import { connectionToMongoDb } from "./utils/db.js";
 import cloudinary from "cloudinary";
-import productRouter from "./router/product.js";
 import authRouter from "./router/auth.js";
-import stripeRouter from "./router/stripe.js";
 
 async function init() {
   dotenv.config();
@@ -21,9 +19,7 @@ async function init() {
   app.use(bodyParser.json());
   const port = process.env.PORT || 4000;
 
-  app.use("/product", productRouter);
   app.use("/auth", authRouter);
-  app.use("/stripe", stripeRouter);
   app.get("/", (req, res) => {
     res.send("test");
   });

@@ -6,6 +6,7 @@ const useValidatation = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState({
+    accountName: "",
     username: "",
     password: "",
     confirmPassword: "",
@@ -70,40 +71,58 @@ const useValidatation = () => {
   const handleValidatePassword = (password) => {
     const moreThanFourAndLessThanSixty =
       password.length >= 4 && password.length <= 60;
+    const signin = window.location.href.includes("signin");
+    const signup = window.location.href.includes("signup");
     const lowerCase = /[a-z]/g;
     const upperCase = /[A-Z]/g;
     const numbers = /[0-9]/g;
 
-    if (password === "") {
-      setErrorMessage((prev) => ({
-        ...prev,
-        password: "Password is required",
-      }));
-    } else if (!moreThanFourAndLessThanSixty) {
-      setErrorMessage((prev) => ({
-        ...prev,
-        password: "Your password must contain between 4 and 60 characters",
-      }));
-    } else if (!password.match(upperCase)) {
-      setErrorMessage((prev) => ({
-        ...prev,
-        password: "Your password must contain at least one uppercase letter",
-      }));
-    } else if (!password.match(lowerCase)) {
-      setErrorMessage((prev) => ({
-        ...prev,
-        password: "Your password must contain at least one lowercase letter",
-      }));
-    } else if (!password.match(numbers)) {
-      setErrorMessage((prev) => ({
-        ...prev,
-        password: "Your password must contain at least one number",
-      }));
-    } else {
-      setErrorMessage((prev) => ({
-        ...prev,
-        password: "",
-      }));
+    if (signin) {
+      if (!moreThanFourAndLessThanSixty) {
+        setErrorMessage((prev) => ({
+          ...prev,
+          password: "Your password must contain between 4 and 60 characters",
+        }));
+      } else {
+        setErrorMessage((prev) => ({
+          ...prev,
+          password: "",
+        }));
+      }
+    }
+
+    if (signup) {
+      if (password === "") {
+        setErrorMessage((prev) => ({
+          ...prev,
+          password: "Password is required",
+        }));
+      } else if (!moreThanFourAndLessThanSixty) {
+        setErrorMessage((prev) => ({
+          ...prev,
+          password: "Your password must contain between 4 and 60 characters",
+        }));
+      } else if (!password.match(upperCase)) {
+        setErrorMessage((prev) => ({
+          ...prev,
+          password: "Your password must contain at least one uppercase letter",
+        }));
+      } else if (!password.match(lowerCase)) {
+        setErrorMessage((prev) => ({
+          ...prev,
+          password: "Your password must contain at least one lowercase letter",
+        }));
+      } else if (!password.match(numbers)) {
+        setErrorMessage((prev) => ({
+          ...prev,
+          password: "Your password must contain at least one number",
+        }));
+      } else {
+        setErrorMessage((prev) => ({
+          ...prev,
+          password: "",
+        }));
+      }
     }
   };
 

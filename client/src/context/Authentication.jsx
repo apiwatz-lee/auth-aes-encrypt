@@ -30,10 +30,9 @@ const AuthProvider = ({ children }) => {
         navigate("/signin");
       }
     } catch (error) {
-      console.log(error?.response?.data?.message);
       toast({
         title: "signup failed.",
-        description: `username is already taken.`,
+        description: `your email or phone number is already taken`,
         status: "error",
         duration: 2000,
         isClosable: true,
@@ -56,14 +55,14 @@ const AuthProvider = ({ children }) => {
       navigate("/movies");
       toast({
         title: "Login successfully",
-        description: `Hello ${userDataFromToken.firstname}, Have a good day!`,
+        description: `Hello ${userDataFromToken?.firstname}, Have a good day!`,
         status: "success",
         duration: 2000,
         isClosable: true,
         position: "top",
       });
     } catch (error) {
-      console.log(`Cannot login from client due to ${error}`);
+      console.log(`Cannot login from client due to ${error.response}`);
       toast({
         title: "Login failed.",
         description: `Invalid user ID or password`,
@@ -83,7 +82,7 @@ const AuthProvider = ({ children }) => {
     const getToken =
       localStorage.getItem("token") || sessionStorage.getItem("token");
     const decodeToken = jwtDecode(getToken);
-    const name = decodeToken.firstname;
+    const name = decodeToken?.firstname;
     localStorage.removeItem("token");
     sessionStorage.removeItem("token");
     navigate("/signin");

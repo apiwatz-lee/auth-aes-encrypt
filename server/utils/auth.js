@@ -20,7 +20,6 @@ export const generateToken = async (user) => {
     {
       userId: user._id,
       firstname: decryptData(user.account_name),
-      lastname: user.lastname,
       role: "user",
     },
     process.env.SECRET_KEY,
