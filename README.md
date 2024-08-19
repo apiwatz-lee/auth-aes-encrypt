@@ -1,6 +1,17 @@
+<div align="center">
+  
 # Netflix Web Application
+</div>
+&nbsp;
 
-A small web application simulating a Netflix-like experience. This project demonstrates a complete stack solution with a focus on authentication, data encryption, and responsive design.
+<div align="center">
+  <img src="https://res.cloudinary.com/dpsrbpkav/image/upload/v1724084797/Screenshot_2567-08-19_at_23.24.05_erczvn.png" width='300'>
+  <img src="https://res.cloudinary.com/dpsrbpkav/image/upload/v1724084800/Screenshot_2567-08-19_at_23.24.18_ffcmsy.png" width='300'>
+  <img src="https://res.cloudinary.com/dpsrbpkav/image/upload/v1724084798/Screenshot_2567-08-19_at_23.24.48_hhd2rh.png" width='300'>
+</div>
+
+&nbsp;
+<p align="center">A small web application simulating a Netflix-like experience. This project demonstrates a complete stack solution with a focus on authentication, data encryption, and responsive design.</p>
 
 ## Features
 
