@@ -4,7 +4,6 @@ import Movies from "../components/Movies";
 const MovieListPage = () => {
   return (
     <>
-      <Loading />
       <Movies />
     </>
   );

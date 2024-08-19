@@ -7,19 +7,21 @@ import jwtInterceptor from "./utils/jwtInterceptors.js";
 import { BrowserRouter } from "react-router-dom";
 import { LoadingProvider } from "./context/LoadingProvider.jsx";
 import { ChakraProvider } from "@chakra-ui/react";
+import Loading from "./components/Loading.jsx";
 
 jwtInterceptor();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthProvider>
-        <LoadingProvider>
+      <LoadingProvider>
+        <AuthProvider>
           <ChakraProvider>
+            <Loading />
             <App />
           </ChakraProvider>
-        </LoadingProvider>
-      </AuthProvider>
+        </AuthProvider>
+      </LoadingProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

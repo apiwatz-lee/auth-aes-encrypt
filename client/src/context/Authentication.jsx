@@ -3,6 +3,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
+import { useLoading } from "./LoadingProvider";
 
 const AuthContext = createContext();
 
@@ -10,11 +11,13 @@ const AuthProvider = ({ children }) => {
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
   const toast = useToast();
+  const { setIsLoading } = useLoading();
 
   const server = import.meta.env.VITE_API;
 
   const register = async (data) => {
     try {
+      setIsLoading(true);
       const {
         data: { message },
       } = await axios.post(`${server}/api/auth/register`, data);
@@ -39,11 +42,14 @@ const AuthProvider = ({ children }) => {
         isClosable: true,
         position: "top",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const login = async (data) => {
     try {
+      setIsLoading(true);
       const result = await axios.post(`${server}/api/auth/login`, data);
       const token = result?.data?.token;
       if (rememberMe) {
@@ -72,6 +78,8 @@ const AuthProvider = ({ children }) => {
         isClosable: true,
         position: "top",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -80,6 +88,7 @@ const AuthProvider = ({ children }) => {
   );
 
   const logout = () => {
+    setIsLoading(true);
     localStorage.removeItem("token");
     sessionStorage.removeItem("token");
     navigate("/signin");
@@ -91,6 +100,7 @@ const AuthProvider = ({ children }) => {
       isClosable: true,
       position: "top",
     });
+    setIsLoading(false);
   };
 
   return (
