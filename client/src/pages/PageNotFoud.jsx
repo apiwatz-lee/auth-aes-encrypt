@@ -1,5 +1,3 @@
-import React from "react";
-
 const PageNotFoud = () => {
   return (
     <div className="border flex justify-center items-center h-screen flex-col">
