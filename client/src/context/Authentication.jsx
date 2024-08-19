@@ -52,11 +52,15 @@ const AuthProvider = ({ children }) => {
         sessionStorage.setItem("token", token);
       }
 
-      const userDataFromToken = jwtDecode(token);
+      const decodeToken = jwtDecode(token);
+
+      // to see the remaining time of the token
+      // console.log((decodeToken.exp * 1000 - Date.now()) / 1000);
+
       navigate("/movies");
       toast({
         title: "Login successfully",
-        description: `Hello ${userDataFromToken?.firstname}, Have a good day!`,
+        description: `Hello ${decodeToken?.firstname}, Have a good day!`,
         status: "success",
         duration: 2000,
         isClosable: true,

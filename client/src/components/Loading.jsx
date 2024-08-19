@@ -6,11 +6,11 @@ import {
   useDisclosure,
   Spinner,
 } from "@chakra-ui/react";
-import { useApp } from "../context/AppContext";
+import { useLoading } from "../context/LoadingProvider";
 
 const Loading = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isLoading } = useApp();
+  const { isLoading } = useLoading();
 
   useEffect(() => {
     if (isLoading) {
