@@ -1,5 +1,6 @@
 export const movies = [
   {
+    id: 1,
     url: "https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQcAWuE4OwUWHYCvOw18yZhlSqnvWg85l4qr7_RDDKDsU-UC1m2e2PNUKRCrq1i-xt6ahkSW_07Xh1VBFpqLscM637VnJl5xFEOyXSDGxRgjRGotpQ2W7ez4qaaIVeK8WFRWuYVKFZuD0tpmt-9ucE_u1.jpg?r=c47",
     by: "Tina Rowden/Netflix",
     year: "2024",
@@ -10,6 +11,7 @@ export const movies = [
     director: "Richard LaGravenese",
   },
   {
+    id: 2,
     url: "https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQSXg0UtFiH5xC2uy1GY2Vj2GGSuwlJq2EdteczBtzDP-bQvp2FQO244xticEbI6PdGusr1SNI46ehtW8W6DoOBLD6XKAHjQ6Owz6KnSFsa64DY0dLjHI4CqWsAxfyHZ8vXDuchpImoFrjef-7RI9QGyX.jpg?r=806",
     by: "Ana Carballosa/Netflix",
     year: "2024",
@@ -20,6 +22,7 @@ export const movies = [
     director: "Brad Peyton",
   },
   {
+    id: 3,
     url: "https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQVxacG5LRP5cEyhldly1qMNF05zCuh8Av5qGUYQgNN1GSQNYOofQ31OF1t1fGOWzXuaMrF3_oX92jqD0QGQgaNlKD9RUgGPJGdV27jeZvy4NdZu6VeUmiUOB_uX6NpHRSs-wqBNWVd47RZpjyvJEHVus.jpg?r=85c",
     by: "John Wilson/Netflix",
     year: "2024",
@@ -30,6 +33,7 @@ export const movies = [
     director: "Seth Gordon",
   },
   {
+    id: 4,
     url: "https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQQiXyuh7sV66GXq6b_44LjhQzcgTDVJQmWgzluaI-WET6YRl72ALVZ6RL54JICfAOOj2CtpoFaLC0Yx4nEu8pV7GtrV2Vo3HmbQBh1wCPvvKJMK_-hWDcZuWJ3M6DcPTfYR1OujO28XgTnN7rXf48d_I.jpg?r=91f",
     by: "Alfredo Falvo/Netflix",
     year: "March 29",
@@ -40,6 +44,7 @@ export const movies = [
     director: "Thea Sharrock (Me Before You, Wicked Little Letters)",
   },
   {
+    id: 5,
     url: "https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQVSheYdU3R8xCcmkxOoDlS4lFB8fWDe0ejMa56jEIrg30ElG1wQOWdiHXK3sTCr8_L2BRhyy5nn1qoS_o-DEV7p-tCFCdOQc_IHU2ocqqohaK-Yo9oAoZYVaaCpNab8aeSk3w8_GzOe8dvZSdgKXmIGL.jpg?r=f92",
     by: "",
     year: "July 3",
@@ -50,6 +55,7 @@ export const movies = [
     director: "Mark Molloy",
   },
   {
+    id: 6,
     url: "https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQW8S5X3_V4i3FczfnIszJ9_9Kt5OwI3CHImGllPUCLjjCjhexxmN6uGp1zSiycgzBeYEbMXJT0WqTC2btJ8RdWNxL6zmznNYmyzaqfFmWGhfdFSyYFz4sBGFJHhmOKxv2-ARPo6r8Nce4q0Rf1Z7XCgJ.png?r=0e5",
     by: "",
     year: "NOW STREAMING",
@@ -60,6 +66,7 @@ export const movies = [
     director: "Mark Molloy",
   },
   {
+    id: 7,
     url: "https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQT7ovnUEvLEx210OquIzOqd3RhHdAttXkUYDsthmAJboVZwuQbwFloKSzYQfy3xdJVIwkxL0awyZwg2fJjSksUvxiBBFK-vqAHdYo--t-B5BfoECFMLKsbPPIaV7PSfUjuQbj9_InWYDG43As98NJpaw.jpg?r=7e2",
     by: "Sasha Ostrov/Netflix",
     year: "2024",
@@ -70,6 +77,7 @@ export const movies = [
     director: "Marco Petry",
   },
   {
+    id: 8,
     url: "https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQWqJb6-Adg4VbX6-EuHq-SBbFRuLfHJUJ59jL7p8sQf_RvUcbwVYG5BbqGsSiAuR70ehFRred543MbVHZcdEAdeLEANGh8K4sQhWcmuaTOy-j4Iww2NmPcfegyG0lYYXV83wUyza17enP9M_uTff0W34.jpg?r=77a",
     by: "Sam Lothridge/Netflix",
     year: "2024",
@@ -80,6 +88,7 @@ export const movies = [
     director: "Jaume Collet-Serra",
   },
   {
+    id: 9,
     url: "https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQac1KGe79Hv715eWzV52JwIG4W1VR9s-XLna7fyNwnU-otO5EDVCnE_A9mqL6sTfQ9F1wCvuJkCG109XyTC3SqvtJurdmaBpNMZ1XjpC6DfW0FsdgSUnCh7XalCQqdCapGh-6oWjspnhdG5siT0vlpJG.jpg?r=453",
     by: "",
     year: "March 22",
@@ -90,6 +99,7 @@ export const movies = [
     director: "Miguel Puga",
   },
   {
+    id: 10,
     url: "https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQRF6Q79JOEfvoBR0R_xfxDlN0l0HygRu_xuNIX3bqIRp5T7PyjYjOxTS1e46pPVuqMUAjVu3zHqX2qQHkph9oYJ3K2DOUzpyZUY2AzwxSXXk_zowF4kZCtPY3InP1mcs_2WKDy-wX9zgPsiJMrcN6ZXU.jpg?r=71e",
     by: "",
     year: "Feb 28",
@@ -100,6 +110,7 @@ export const movies = [
     director: "Jeff Chan",
   },
   {
+    id: 11,
     url: "https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQe5R7e13VSJOdXAMQYh3uTNnkqtiRl7IEXYfKQPA4AMC1XWiukBErR9AnMddsGNW2c8KOkKVP-lPyMDincTbaItIdUX5yHxXka04We-egLANGp1xj0EkpjW339VG8velr4WZhYg1FLE7a6PcWAeV9nUR.jpg?r=310",
     by: "John Wilson/Netflix",
     year: "March 8",

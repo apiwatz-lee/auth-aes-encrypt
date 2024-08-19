@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
       if (message === "user has been created successfully") {
         toast({
           title: "Register successfully.",
-          description: `We have created your account successfully!`,
+          description: `Your account has been created successfully!`,
           status: "success",
           duration: 2000,
           isClosable: true,
@@ -31,8 +31,8 @@ const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       toast({
-        title: "signup failed.",
-        description: `your email or phone number is already taken`,
+        title: "Signup failed.",
+        description: `Your email or phone number is already taken`,
         status: "error",
         duration: 2000,
         isClosable: true,
@@ -62,7 +62,6 @@ const AuthProvider = ({ children }) => {
         position: "top",
       });
     } catch (error) {
-      console.log(`Cannot login from client due to ${error.response}`);
       toast({
         title: "Login failed.",
         description: `Invalid user ID or password`,
@@ -79,16 +78,12 @@ const AuthProvider = ({ children }) => {
   );
 
   const logout = () => {
-    const getToken =
-      localStorage.getItem("token") || sessionStorage.getItem("token");
-    const decodeToken = jwtDecode(getToken);
-    const name = decodeToken?.firstname;
     localStorage.removeItem("token");
     sessionStorage.removeItem("token");
     navigate("/signin");
     toast({
       title: "Logout successfully.",
-      description: `Hey ${name}, See you around!`,
+      description: `See you around!`,
       status: "success",
       duration: 2000,
       isClosable: true,

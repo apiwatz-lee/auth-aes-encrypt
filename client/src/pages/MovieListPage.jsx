@@ -23,8 +23,9 @@ const MovieListPage = () => {
           </p>
           <hr className="h-[1px] bg-white opacity-60 my-3" />
 
-          {movies.map((movie, index) => (
+          {movies.map((movie) => (
             <MovieRecommend
+              key={movie?.id}
               title={movie?.title}
               image={movie?.url}
               author={movie?.by}
@@ -32,7 +33,6 @@ const MovieListPage = () => {
               description={movie?.description}
               cast={movie?.cast}
               director={movie?.director}
-              key={index}
             />
           ))}
 

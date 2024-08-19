@@ -18,7 +18,7 @@ export const register = async (req, res) => {
       message: "user has been created successfully",
     });
   } catch (error) {
-    return res.status(400).json({ error: `Register weng wrong :${error}` });
+    return res.status(500).json({ message: error.message });
   }
 };
 
@@ -33,6 +33,6 @@ export const login = async (req, res) => {
       token,
     });
   } catch (error) {
-    return res.status(400).json({ error: `Login went wrong :${error}` });
+    return res.status(500).json({ message: error.message });
   }
 };

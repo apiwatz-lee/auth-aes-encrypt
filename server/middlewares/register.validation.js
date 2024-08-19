@@ -16,12 +16,12 @@ export const validateSignUpPayload = async (req, res, next) => {
       .findOne({ username: encryptUsername });
 
     if (findUsername) {
-      return res.status(500).json({ message: "Username is already taken" });
+      return res.status(400).json({ message: "Username is already taken" });
     }
 
     next();
   } catch (error) {
-    return res.status(400).json({ error: `Register weng wrong :${error}` });
+    return res.status(500).json({ message: error.message });
   }
 };
 
