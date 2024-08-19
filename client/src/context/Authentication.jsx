@@ -60,7 +60,7 @@ const AuthProvider = ({ children }) => {
 
       const decodeToken = jwtDecode(token);
 
-      navigate("/movies");
+      navigate("/movies", { replace: true });
       toast({
         title: "Login successfully",
         description: `Hello ${decodeToken?.firstname}, Have a good day!`,
