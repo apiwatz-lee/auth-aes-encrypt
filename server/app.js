@@ -3,23 +3,19 @@ import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import { connectionToMongoDb } from "./utils/db.js";
-import cloudinary from "cloudinary";
 import authRouter from "./router/auth.js";
+import moviesRouter from "./router/movies.js";
 
 async function init() {
   dotenv.config();
-  cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET,
-    secure: true,
-  });
+
   const app = express();
   app.use(cors());
   app.use(bodyParser.json());
   const port = process.env.PORT || 4000;
 
-  app.use("/auth", authRouter);
+  app.use("/api", authRouter);
+  app.use("/api", moviesRouter);
   app.get("/", (req, res) => {
     res.send("test");
   });

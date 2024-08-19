@@ -10,13 +10,14 @@ const AuthProvider = ({ children }) => {
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
   const toast = useToast();
+
   const server = import.meta.env.VITE_API;
 
   const register = async (data) => {
     try {
       const {
         data: { message },
-      } = await axios.post(`${server}/auth/register`, data);
+      } = await axios.post(`${server}/api/auth/register`, data);
 
       if (message === "user has been created successfully") {
         toast({
@@ -43,7 +44,7 @@ const AuthProvider = ({ children }) => {
 
   const login = async (data) => {
     try {
-      const result = await axios.post(`${server}/auth/login`, data);
+      const result = await axios.post(`${server}/api/auth/login`, data);
       const token = result?.data?.token;
       if (rememberMe) {
         localStorage.setItem("token", token);

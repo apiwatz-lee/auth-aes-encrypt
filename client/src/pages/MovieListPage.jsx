@@ -1,18 +1,18 @@
-import { movies } from "../data/data";
 import { useAuth } from "../context/Authentication";
-import { jwtDecode } from "jwt-decode";
 import MovieRecommend from "../components/MovieRecommend";
+import useMovies from "../hook/useMovies";
+import Loading from "../components/Loading";
+import useToken from "../hook/useToken";
+
 const MovieListPage = () => {
   const { logout } = useAuth();
-
-  const token =
-    localStorage.getItem("token") || sessionStorage.getItem("token");
-  const decodeToken = jwtDecode(token);
-  const firstname = decodeToken?.firstname;
+  const { firstname } = useToken();
+  const { movies } = useMovies();
 
   return (
     <>
-      <div className=" bg-black w-full font-poppins p-11">
+      <Loading />
+      <main className=" bg-black w-full font-poppins p-11">
         <section className="container mx-auto max-w-3xl flex flex-col">
           <h1 className="text-white text-center text-4xl sm:text-6xl mt-9">
             <span className="text-red-600">NETFLIX</span> MOVIES
@@ -52,7 +52,7 @@ const MovieListPage = () => {
             </button>
           </div>
         </section>
-      </div>
+      </main>
     </>
   );
 };

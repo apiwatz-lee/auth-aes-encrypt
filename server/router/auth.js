@@ -13,13 +13,18 @@ import {
 const authRouter = Router();
 
 authRouter.post(
-  "/register",
+  "/auth/register",
   validateSignUpPayload,
   validateUsername,
   validatePassword,
   register
 );
 
-authRouter.post("/login", compareUsernameLogin, comparePasswordLogin, login);
+authRouter.post(
+  "/auth/login",
+  compareUsernameLogin,
+  comparePasswordLogin,
+  login
+);
 
 export default authRouter;

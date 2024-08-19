@@ -23,6 +23,7 @@ export const generateToken = async (user) => {
       role: "user",
     },
     process.env.SECRET_KEY,
-    { expiresIn: "90000" }
+    { expiresIn: 900 }
+    // 15mins
   );
 };
