@@ -8,10 +8,16 @@ import moviesRouter from "./router/movies.js";
 
 async function init() {
   dotenv.config();
-
   const app = express();
   app.use(cors());
   app.use(bodyParser.json());
+
+  try {
+    await connectionToMongoDb();
+  } catch (error) {
+    console.log("Error while connecting to MongoDB", error);
+  }
+
   const port = process.env.PORT || 4000;
 
   app.use("/api", authRouter);
@@ -25,7 +31,6 @@ async function init() {
   });
 
   app.listen(port, async () => {
-    await connectionToMongoDb();
     console.log(`Server is running at ${port}`);
   });
 }

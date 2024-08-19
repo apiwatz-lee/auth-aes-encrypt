@@ -12,9 +12,10 @@ const useMovies = () => {
       setIsLoading(true);
       const res = await axios.get(`${server}/api/movies`);
       setMovies(res?.data?.data);
-      setIsLoading(false);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
