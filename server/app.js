@@ -9,14 +9,7 @@ import moviesRouter from "./router/movies.js";
 async function init() {
   dotenv.config();
   const app = express();
-  const corsOptions = {
-    origin:
-      process.env.NODE_ENV === "production"
-        ? "https://apwrealsmart.netlify.app"
-        : "http://localhost:5173",
-  };
-
-  app.use(cors(corsOptions));
+  app.use(cors());
   app.use(bodyParser.json());
 
   try {
