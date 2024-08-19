@@ -9,7 +9,11 @@ import moviesRouter from "./router/movies.js";
 async function init() {
   dotenv.config();
   const app = express();
-  app.use(cors());
+  const corsOptions = {
+    origin: "http://localhost:5173",
+  };
+
+  app.use(cors(corsOptions));
   app.use(bodyParser.json());
 
   try {

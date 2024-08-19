@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 dotenv.config();
 
-const connectionString = process.env.MONGO_CONNECTION;
+const connectionString = process.env.MONGODB_URI;
 
 export const client = new MongoClient(connectionString, {
   useUnifiedTopology: true,
