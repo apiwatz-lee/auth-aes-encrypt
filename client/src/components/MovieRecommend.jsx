@@ -6,10 +6,18 @@ const MovieRecommend = ({
   description,
   cast,
   director,
+  link,
 }) => {
+  const handleLeadToMovies = () => {
+    window.open(link, "_blank");
+  };
   return (
     <div>
-      <img className="mt-6" src={image} />
+      <img
+        className="mt-6 cursor-pointer"
+        src={image}
+        onClick={handleLeadToMovies}
+      />
       <h2 className="text-white opacity-60 text-sm mt-2">{author}</h2>
       <p className="text-red-600 font-bold text-lg">{year}</p>
       <h1 className="text-white text-3xl sm:text-5xl font-black">

@@ -21,14 +21,15 @@ const Movies = () => {
 
         {movies?.map((movie) => (
           <MovieRecommend
-            key={movie?.id}
+            key={movie?._id}
             title={movie?.title}
-            image={movie?.url}
+            image={movie?.poster}
             author={movie?.by}
             year={movie?.year}
             description={movie?.description}
             cast={movie?.cast}
             director={movie?.director}
+            link={movie?.link}
           />
         ))}
 
