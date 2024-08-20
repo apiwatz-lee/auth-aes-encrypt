@@ -18,6 +18,7 @@
 ### Backend
 
 - **Signup & Signin**: Users can register and log in to their accounts.
+- **Logout**: Users can log out securely, ending their session.
 - **Form Validation**: Ensures that user input is validated on both client and server side.
 - **JWT Authentication**: Secures user sessions with JSON Web Tokens.
 - **AES Encryption**: Protects sensitive user data with AES encryption.

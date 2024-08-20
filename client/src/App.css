@@ -6,6 +6,7 @@ html {
 .chakra-checkbox__label {
   font-size: 1.2rem;
   color: rgb(209 213 219);
+  border: none;
 }
 
 .modal-login {

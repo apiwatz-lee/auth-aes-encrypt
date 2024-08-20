@@ -79,7 +79,7 @@ const LoginModal = () => {
               checked={rememberMe}
               onChange={() => setRememberMe((prev) => !prev)}
             >
-              Remember me
+              <span className="text-white">Remember me</span>
             </Checkbox>
           </Stack>
 
@@ -87,14 +87,14 @@ const LoginModal = () => {
             <a
               href="https://help.netflix.com/th"
               target="_blank"
-              className="text-sm text-gray-300 hover:underline hover:underline-offset-4"
+              className="text-sm text-white hover:underline hover:underline-offset-4"
             >
               Need help?
             </a>
           </div>
         </div>
 
-        <div className="text-gray-300 text-sm">
+        <div className="text-gray-500 text-sm">
           New to Netflix?{" "}
           <span
             onClick={() => navigate("/signup")}
@@ -104,7 +104,7 @@ const LoginModal = () => {
           </span>
         </div>
 
-        <div className="text-gray-300 text-sm">
+        <div className="text-gray-500 text-sm">
           This page is protected by Google reCAPTCHA to ensure you're not a bot.{" "}
           <a
             href="https://www.google.com/recaptcha/about/"
