@@ -6,7 +6,7 @@ export const register = async (req, res) => {
   try {
     const user = {
       account_name: encryptData(req.body.accountName),
-      username: encryptData(req.body.username),
+      username: encryptData(req.body.username.toLowerCase()),
       password: await hashPassword(req.body.password),
       created_at: new Date(),
     };

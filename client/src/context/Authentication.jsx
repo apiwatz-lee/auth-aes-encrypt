@@ -51,6 +51,19 @@ const AuthProvider = ({ children }) => {
     try {
       setIsLoading(true);
       const result = await axios.post(`${server}/api/auth/login`, data);
+
+      if (!result) {
+        toast({
+          title: "Login failed.",
+          description: `Invalid user ID or password`,
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+        return;
+      }
+
       const token = result?.data?.token;
       if (rememberMe) {
         localStorage.setItem("token", token);

@@ -74,7 +74,7 @@ const RegisterModal = () => {
             }`}
             placeholder="Email or phone number"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value.toLowerCase())}
           />
 
           <p className="text-sm mt-2 pl-1 text-[#fa9a00]">
