@@ -33,6 +33,7 @@
 - **Frontend**: Tailwind CSS, React.Js, Chakra UI
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
+- **Validation**: Validator
 - **Encryption**: AES
 - **Authentication**: JWT
 
